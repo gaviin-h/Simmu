@@ -13,14 +13,18 @@ class mini:
         self.ypos=y
         self.brain=brain
         self.energy=100
+        self.dir=90
 
     def eat(self, inp):
         self.energy = min(100, self.energy+inp)
     
     def move(self):
-        self.xpos+=self.dir*math.cos(dir)
-        self.ypos+=self.dir*math.sin(dir)
-        self.energy-=2 
+        mv_x=int(math.cos(math.radians(self.dir)))
+        mv_y=int(math.sin(math.radians(self.dir)))
+        self.xpos+=mv_x
+        self.ypos+=mv_y
+        self.energy-=2
+        return 5*mv_x, 5*mv_y
     
     def turn(self, right_or_left):
         if right_or_left == 0:
@@ -45,3 +49,4 @@ class snack:
         self.xpos=x
         self.ypos=y
         self.energy=energy
+
