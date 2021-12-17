@@ -9,10 +9,12 @@ class brain:
    
     def default_layer(layern):
         default_weights=np.zeros([4,4])
-        bases=np.zeros([4,1])
+        bases=np.zeros([1,4])
         for i in range(4):
+            ## re hatch this a bit -> not sure the right I/O scheme to get the desired actions
             default_weights[i, random.randint(0,3)]=random.randint(-10,10)/10
-        return layer.layer(layern, 4, default_weights, bases)  
+            default_weights[i, random.randint(0,3)]=random.randint(-10,10)/10
+        return layer.layer(layern, default_weights, bases)  
 
     def brain(self, layer1=default_layer(layer1), layer2=default_layer(layer2), layer3=default_layer(layer3)):
         self.layer1=layer1

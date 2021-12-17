@@ -1,31 +1,17 @@
 import numpy as np
 import random
-class node: 
-    weights=[]   
-    base=0 
-    def node(self, weights: np.array, base: int):
-        weights=weights.T
-        weights.reshape([4,1])
-        self.weights=weights
-        self.base=base
-        return self
-
-    def fire(self, inputs):
-        return np.dot(inputs, self.weights)+self.base
 
 class layer:
-    nodes=[]
-    outputs=[]
-    def layer(self, nodes: int, weights: np.array, bases: np.array):
-        for i in range(nodes):
-            self.nodes.append(node.node(node(), weights[i], bases[i]))
+    weights: np.array
+    bases: np.array
+    def layer(self, weights: np.array, bases: np.array):
+        self.weights=weights
+        self.bases=bases
         return self
 
     def fire_layer(self, inputs):
-        for node in self.nodes:
-            self.outputs.append(node.fire(inputs))
-        return self.outputs
-    ## doesnt work with numpy arrats FIX    
+        return np.dot(inputs, self.weights) + self.bases
+    ## doesnt work with numpy arrays FIX    
     def combine(self, other: layer):
         resultant_weights=np.array ## 
         resultant_bases=[] # 

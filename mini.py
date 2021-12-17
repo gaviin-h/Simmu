@@ -4,16 +4,18 @@ from brain import brain
 class mini:
     xpos: int
     ypos: int
-    brain=brain()
+    mind: brain()
     energy: int
     dir: int
+    vision: int
 
-    def mini(self, x, y, brain):
+    def mini(self, x, y, mind):
         self.xpos=x
         self.ypos=y
-        self.brain=brain
+        self.mind=mind
         self.energy=100
         self.dir=90
+        self.vision=25
 
     def eat(self, inp):
         self.energy = min(100, self.energy+inp)
@@ -37,8 +39,11 @@ class mini:
     
     def sex(self, other: mini):
         self.energy-=20
-        brain=self.brain.brain_merge(other.brain)
-        return mini(self.xpos, self.ypos, brain)
+        mind=self.mind.brain_merge(other.mind)
+        return mini(self.xpos, self.ypos, mind)
+    
+    def go(self, inputs):
+        return self.mind.fire_all(inputs)
 
 class snack:
     energy: int
