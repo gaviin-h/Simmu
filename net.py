@@ -10,7 +10,7 @@ class layer:
         return self
 
     def fire_layer(self, inputs):
-        return np.dot(inputs, self.weights) + self.bases
+        return np.dot(self.weights, inputs) + self.bases
     ## doesnt work with numpy arrays FIX    
     def combine(self, other: layer):
         resultant_weights=np.array ## 
